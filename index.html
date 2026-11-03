@@ -1,0 +1,2628 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06180f">
+    <meta name="description" content="Company Profile PT SMART Tbk Padang Halaban Mill">
+    <title>PT SMART Tbk | Padang Halaban Mill</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* =====================================
+           RESET DAN VARIABEL
+        ===================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06180f;
+            --bg-light: #0a2115;
+            --green: #b9f36a;
+            --green-soft: #8bd6a0;
+            --text: #f2f7f2;
+            --muted: #a9b9ad;
+            --border: rgba(185, 243, 106, .16);
+            --card: rgba(255, 255, 255, .045);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* =====================================
+           BACKGROUND
+        ===================================== */
+        #world {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background:
+                radial-gradient(circle at 80% 15%, rgba(39, 111, 61, .2), transparent 35%),
+                radial-gradient(circle at 10% 80%, rgba(29, 91, 48, .16), transparent 35%),
+                #06180f;
+        }
+
+        .background-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background: linear-gradient(
+                180deg,
+                rgba(3, 15, 9, .2),
+                rgba(3, 15, 9, .72)
+            );
+        }
+
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+            opacity: .035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+        }
+
+        /* =====================================
+           NAVBAR
+        ===================================== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 20px 7%;
+            transition: .35s ease;
+        }
+
+        .site-header.scrolled {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background: rgba(4, 20, 12, .94);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            max-width: 1450px;
+            margin: auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 43px;
+            height: 43px;
+            border-radius: 13px;
+            background: var(--green);
+            color: #102416;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.35;
+        }
+
+        .brand-text strong {
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .brand-text small {
+            color: var(--green-soft);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+        }
+
+        .nav-link {
+            color: #c1cec4;
+            font-size: 11px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--green);
+        }
+
+        .nav-contact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 17px;
+            border: 1px solid rgba(185, 243, 106, .45);
+            border-radius: 30px;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+            transition: .3s;
+        }
+
+        .nav-contact:hover {
+            background: var(--green);
+            color: #102416;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: white;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* =====================================
+           HERO / BERANDA
+        ===================================== */
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: .95fr 1.05fr;
+            align-items: center;
+            gap: 50px;
+            min-height: 100vh;
+            padding: 140px 7% 90px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .eyebrow-line {
+            display: inline-block;
+            width: 35px;
+            height: 1px;
+            background: var(--green);
+        }
+
+        .hero h1 {
+            margin: 25px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(48px, 5.3vw, 78px);
+            line-height: 1.04;
+            letter-spacing: -4px;
+        }
+
+        .hero h1 span,
+        .section-heading h2 span,
+        .contact-content h2 span {
+            color: var(--green);
+        }
+
+        .hero-description {
+            max-width: 530px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .primary-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 15px 22px;
+            border-radius: 5px;
+            background: var(--green);
+            color: #102416;
+            font-size: 12px;
+            font-weight: 800;
+            transition: .3s;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(185, 243, 106, .18);
+        }
+
+        .scroll-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 55px;
+            color: #8b9c90;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .mouse-icon {
+            display: grid;
+            place-items: start center;
+            width: 19px;
+            height: 29px;
+            padding-top: 5px;
+            border: 1px solid #91a495;
+            border-radius: 12px;
+        }
+
+        .mouse-icon i {
+            width: 3px;
+            height: 6px;
+            border-radius: 5px;
+            background: var(--green);
+            animation: mouseMove 1.4s infinite;
+        }
+
+        @keyframes mouseMove {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(8px);
+                opacity: 0;
+            }
+        }
+
+        .hero-company-image {
+            position: relative;
+            height: clamp(350px, 42vw, 570px);
+            overflow: hidden;
+            border: 1px solid rgba(153, 255, 174, .3);
+            border-radius: 24px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, .35);
+        }
+
+        .hero-company-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 1s ease;
+        }
+
+        .hero-company-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .hero-company-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                0deg,
+                rgba(3, 19, 11, .75),
+                transparent 65%
+            );
+        }
+
+        .hero-image-caption {
+            position: absolute;
+            z-index: 2;
+            right: 20px;
+            bottom: 20px;
+            color: white;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .hero-index {
+            position: fixed;
+            top: 50%;
+            right: 15px;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px 9px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: rgba(3, 17, 9, .85);
+            transform: translateY(-50%);
+            backdrop-filter: blur(12px);
+        }
+
+        .index-number {
+            display: grid;
+            place-items: center;
+            width: 25px;
+            height: 25px;
+            color: #87988b;
+            font-size: 10px;
+            font-weight: 800;
+            transition: .3s;
+        }
+
+        .index-number:hover,
+        .index-number.active {
+            color: var(--green);
+        }
+
+        /* =====================================
+           SECTION UMUM
+        ===================================== */
+        .content-section {
+            padding: 100px 7%;
+            scroll-margin-top: 80px;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 45px;
+            color: var(--green-soft);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .section-label > span:first-child {
+            color: var(--green);
+        }
+
+        .label-line {
+            width: 35px;
+            height: 1px;
+            background: var(--green);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .section-heading h2,
+        .gallery-heading h2 {
+            margin: 20px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(38px, 5vw, 65px);
+            line-height: 1.12;
+            letter-spacing: -2px;
+        }
+
+        .section-heading > p,
+        .gallery-heading > p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .section-description p {
+            margin-bottom: 18px;
+            color: #b6c4ba;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* =====================================
+           HIGHLIGHT PROFIL
+        ===================================== */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+            margin: 45px 0;
+        }
+
+        .highlight-card {
+            position: relative;
+            min-height: 190px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            background: var(--card);
+            transition: .3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(185, 243, 106, .5);
+        }
+
+        .highlight-number {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            color: #718376;
+            font-size: 10px;
+        }
+
+        .highlight-card > i {
+            color: var(--green);
+            font-size: 24px;
+        }
+
+        .highlight-card h3 {
+            margin: 18px 0 7px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+        }
+
+        .highlight-card p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           PANEL INFORMASI
+        ===================================== */
+        .information-panel,
+        .supply-panel,
+        .workforce-panel,
+        .culture-panel,
+        .process-panel {
+            margin-top: 35px;
+            padding: 35px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: linear-gradient(
+                135deg,
+                rgba(5, 28, 18, .96),
+                rgba(8, 45, 29, .8)
+            );
+        }
+
+        .information-panel {
+            display: grid;
+            grid-template-columns: .8fr 1.5fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .information-heading h3,
+        .supply-panel h3,
+        .workforce-panel h3,
+        .culture-panel h3,
+        .process-panel h3 {
+            margin: 12px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+        }
+
+        .information-heading p,
+        .supply-panel > p,
+        .workforce-panel > p,
+        .culture-panel > p,
+        .process-panel > p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .information-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .information-item {
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, .09);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .information-item span {
+            display: block;
+            margin-bottom: 5px;
+            color: #91a495;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .information-item strong {
+            font-size: 12px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .supply-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .supply-grid div {
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .035);
+        }
+
+        .supply-grid span {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--green);
+            font-size: 10px;
+        }
+
+        .supply-grid strong {
+            font-size: 11px;
+        }
+
+        .small-note {
+            margin-top: 18px;
+            color: #87988b;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           SEJARAH / TIMELINE
+        ===================================== */
+        .section-heading {
+            max-width: 750px;
+            margin-bottom: 35px;
+        }
+
+        .timeline {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 55px 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 13px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(185, 243, 106, .35);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-top: 35px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            z-index: 2;
+            width: 17px;
+            height: 17px;
+            border: 4px solid #0a2115;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 0 1px var(--green);
+        }
+
+        .timeline-number {
+            display: block;
+            color: var(--green);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 25px;
+        }
+
+        .timeline-item small {
+            display: block;
+            margin: 7px 0;
+            color: #8fa194;
+            font-size: 8px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item h3 {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .vision-card {
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--card);
+        }
+
+        .vision-card h3 {
+            margin: 13px 0;
+            font-size: 22px;
+        }
+
+        .vision-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .culture-grid article {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .035);
+        }
+
+        .culture-grid i {
+            color: var(--green);
+            font-size: 25px;
+        }
+
+        .culture-grid h4 {
+            margin: 12px 0 5px;
+            font-size: 14px;
+        }
+
+        .culture-grid p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* =====================================
+           ORGANISASI
+        ===================================== */
+        .organization-chart {
+            margin: 35px 0;
+        }
+
+        .org-branches {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+        }
+
+        .org-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 190px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            background: var(--card);
+            text-align: center;
+            transition: .3s;
+        }
+
+        .org-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .org-box i {
+            margin-bottom: 15px;
+            color: var(--green);
+            font-size: 30px;
+        }
+
+        .org-box strong {
+            font-size: 13px;
+        }
+
+        .org-box small {
+            margin-top: 9px;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .chart-note {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .workforce-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .workforce-grid div {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .035);
+        }
+
+        .workforce-grid strong {
+            display: block;
+            color: var(--green);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+        }
+
+        .workforce-grid span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* =====================================
+           GALERI FASILITAS
+        ===================================== */
+        .gallery-heading {
+            max-width: 750px;
+            margin-bottom: 35px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--card);
+            transition: .35s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(185, 243, 106, .5);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            transition: transform .5s;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            padding: 20px;
+        }
+
+        .gallery-caption span {
+            color: var(--green-soft);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .gallery-caption h3 {
+            margin: 10px 0;
+            font-size: 17px;
+        }
+
+        .gallery-caption p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .gallery-note {
+            margin-top: 20px;
+            color: #87988b;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           PRODUK
+        ===================================== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .product-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--card);
+            transition: .3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(185, 243, 106, .5);
+        }
+
+        .product-visual {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: #10291b;
+        }
+
+        .product-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s;
+        }
+
+        .product-card:hover .product-visual img {
+            transform: scale(1.06);
+        }
+
+        .product-visual > span {
+            position: absolute;
+            top: 17px;
+            left: 17px;
+            display: grid;
+            place-items: center;
+            width: 37px;
+            height: 37px;
+            border: 1px solid rgba(255, 255, 255, .4);
+            border-radius: 50%;
+            background: rgba(3, 17, 9, .8);
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info small {
+            color: var(--green);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .product-info h3 {
+            margin: 10px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 23px;
+        }
+
+        .product-info p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        /* =====================================
+           PROSES PRODUKSI
+        ===================================== */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .process-flow div {
+            flex: 1;
+            min-height: 95px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .process-flow div span {
+            margin-bottom: 7px;
+            color: var(--green);
+            font-size: 10px;
+        }
+
+        .process-flow div strong {
+            font-size: 11px;
+        }
+
+        .process-flow > i {
+            color: var(--green);
+            font-size: 17px;
+        }
+
+        /* =====================================
+           LOKASI DAN PETA
+        ===================================== */
+        #location .two-column {
+            align-items: center;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .location-item > i {
+            color: var(--green);
+            font-size: 24px;
+        }
+
+        .location-item strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .location-item p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .map-card {
+            height: 370px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+        }
+
+        .map-card iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* =====================================
+           MEDIA SOSIAL
+        ===================================== */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--card);
+            transition: .3s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+            background: rgba(185, 243, 106, .06);
+        }
+
+        .social-card > i:first-child {
+            display: grid;
+            place-items: center;
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+            border-radius: 12px;
+            background: rgba(185, 243, 106, .1);
+            color: var(--green);
+            font-size: 23px;
+        }
+
+        .social-info {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .social-info small {
+            color: #91a495;
+            font-size: 8px;
+            letter-spacing: 1.2px;
+        }
+
+        .social-info strong {
+            font-size: 14px;
+        }
+
+        .social-info span {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .social-arrow {
+            color: var(--green);
+        }
+
+        /* =====================================
+           KONTAK
+        ===================================== */
+        .contact-section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 450px;
+            padding: 90px 7%;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 100%, rgba(76, 151, 74, .23), transparent 55%),
+                #0a2115;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 700px;
+        }
+
+        .contact-content .eyebrow {
+            justify-content: center;
+        }
+
+        .contact-content h2 {
+            margin: 20px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(38px, 5vw, 60px);
+            line-height: 1.15;
+        }
+
+        .contact-content p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+        .site-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 28px 7%;
+            border-top: 1px solid var(--border);
+            background: #041109;
+        }
+
+        .footer-center {
+            color: #819286;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-align: center;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* =====================================
+           ANIMASI REVEAL
+        ===================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =====================================
+           RESPONSIVE TABLET
+        ===================================== */
+        @media (max-width: 1050px) {
+            .main-nav {
+                gap: 13px;
+            }
+
+            .nav-link {
+                font-size: 10px;
+            }
+
+            .hero {
+                gap: 25px;
+                padding-left: 5%;
+                padding-right: 6%;
+            }
+
+            .hero h1 {
+                font-size: clamp(42px, 5vw, 58px);
+            }
+
+            .highlight-grid,
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline {
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 30px;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .org-branches {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =====================================
+           RESPONSIVE MOBILE
+        ===================================== */
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 14px 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+                margin-left: auto;
+            }
+
+            .main-nav {
+                position: absolute;
+                top: 75px;
+                left: 5%;
+                right: 5%;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 12px;
+                border: 1px solid var(--border);
+                border-radius: 13px;
+                background: rgba(4, 20, 12, .98);
+            }
+
+            .main-nav.open {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 12px;
+                font-size: 12px;
+            }
+
+            .nav-contact {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                min-height: auto;
+                padding: 125px 7% 70px;
+            }
+
+            .hero h1 {
+                font-size: clamp(43px, 10vw, 60px);
+                letter-spacing: -2px;
+            }
+
+            .hero-company-image {
+                height: 300px;
+            }
+
+            .hero-index {
+                display: none;
+            }
+
+            .content-section {
+                padding: 70px 7%;
+            }
+
+            .two-column,
+            .information-panel,
+            .vision-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .highlight-grid,
+            .culture-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .supply-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-flow {
+                flex-wrap: wrap;
+            }
+
+            .process-flow div {
+                flex: 1 1 28%;
+            }
+
+            .process-flow > i {
+                display: none;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-card {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .brand-text strong {
+                font-size: 11px;
+            }
+
+            .brand-text small {
+                font-size: 8px;
+            }
+
+            .brand-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .section-heading h2,
+            .gallery-heading h2 {
+                font-size: 38px;
+            }
+
+            .highlight-grid,
+            .gallery-grid,
+            .org-branches,
+            .workforce-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .information-panel,
+            .supply-panel,
+            .workforce-panel,
+            .culture-panel,
+            .process-panel {
+                padding: 23px;
+            }
+
+            .information-list {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .culture-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-visual {
+                height: 235px;
+            }
+
+            .process-flow div {
+                flex-basis: 45%;
+            }
+
+            .site-footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-center {
+                order: 3;
+            }
+
+            .contact-section {
+                min-height: 380px;
+                padding: 65px 7%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="world"></div>
+ <div class="aura aura-one"></div>
+    <div class="aura aura-two"></div>
+    <div class="aura aura-three"></div>
+    <div class="aurora-light"></div>
+    <div class="light-beam"></div>
+
+    <!-- =====================================
+         NAVBAR
+    ====================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+
+            <a href="#home" class="brand">
+                <span class="brand-icon">S</span>
+                <span class="brand-text">
+                    <strong>PT SMART TBK</strong>
+                    <small>PADANG HALABAN MILL</small>
+                </span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="#home" class="nav-link active">Beranda</a>
+                <a href="#about" class="nav-link">Profil</a>
+                <a href="#history" class="nav-link">Sejarah</a>
+                <a href="#organization" class="nav-link">Organisasi</a>
+                <a href="#gallery" class="nav-link">Fasilitas</a>
+                <a href="#products" class="nav-link">Produk</a>
+                <a href="#location" class="nav-link">Lokasi</a>
+                <a href="#social" class="nav-link">Media Sosial</a>
+            </nav>
+
+            <a href="#contact" class="nav-contact">
+                Hubungi Kami <i class="bi bi-arrow-up-right"></i>
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =====================================
+             01. BERANDA
+        ====================================== -->
+        <section class="hero section" id="home">
+
+            <div class="hero-content reveal">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    PT SMART TBK — PADANG HALABAN MILL
+                </div>
+
+                <h1>
+                    Transforming
+                    <br><span>Palm.</span>
+                    <br>Creating Value.
+                </h1>
+
+                <p class="hero-description">
+                    Mengenal lebih dekat PT SMART Tbk – Padang Halaban Mill,
+                    unit pengolahan kelapa sawit yang mengolah tandan buah
+                    segar menjadi Crude Palm Oil (CPO) dan Palm Kernel (PK).
+                </p>
+
+                <a href="#about" class="primary-button">
+                    Jelajahi Perusahaan
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+                <div class="scroll-indicator">
+                    <span class="mouse-icon"><i></i></span>
+                    <span>SCROLL TO EXPLORE</span>
+                </div>
+
+            </div>
+
+            <div class="hero-company-image reveal">
+                <img
+                    src="https://www.smart-tbk.com/wp-content/uploads/2026/02/Fasilitas-BioCNG.jpg"
+                    alt="Fasilitas BioCNG di Padang Halaban Palm Oil Mill"
+                    fetchpriority="high"
+                    loading="eager"
+                >
+
+                <div class="hero-image-caption">
+                    BIOCNG FACILITY · PADANG HALABAN
+                </div>
+            </div>
+
+            <nav class="hero-index" aria-label="Navigasi halaman">
+                <a href="#home" class="index-number active">01</a>
+                <a href="#about" class="index-number">02</a>
+                <a href="#history" class="index-number">03</a>
+                <a href="#organization" class="index-number">04</a>
+                <a href="#gallery" class="index-number">05</a>
+                <a href="#products" class="index-number">06</a>
+                <a href="#location" class="index-number">07</a>
+                <a href="#social" class="index-number">08</a>
+            </nav>
+
+        </section>
+
+        <!-- =====================================
+             02. PROFIL PERUSAHAAN
+        ====================================== -->
+        <section class="content-section section" id="about">
+
+            <div class="section-label">
+                <span>01</span>
+                <span class="label-line"></span>
+                <span>PROFIL PERUSAHAAN</span>
+            </div>
+
+            <div class="two-column">
+
+                <div class="section-heading reveal">
+                    <div class="eyebrow">
+                        <span class="eyebrow-line"></span>
+                        COMPANY OVERVIEW
+                    </div>
+
+                    <h2>
+                        About
+                        <br><span>Padang Halaban Mill.</span>
+                    </h2>
+
+                    <p>
+                        Mengenal lebih dekat unit pengolahan kelapa sawit
+                        PT SMART Tbk yang berlokasi di Kecamatan Aek Kuo,
+                        Kabupaten Labuhanbatu Utara, Sumatera Utara.
+                    </p>
+                </div>
+
+                <div class="section-description reveal">
+                    <p>
+                        PT SMART Tbk – Padang Halaban Mill merupakan
+                        unit pengolahan kelapa sawit yang menjalankan
+                        kegiatan operasional untuk mengolah tandan buah
+                        segar (TBS) menjadi produk turunan kelapa sawit.
+                    </p>
+
+                    <p>
+                        Dua produk utama yang dihasilkan dari kegiatan
+                        pengolahan tersebut adalah Crude Palm Oil (CPO)
+                        dan Palm Kernel (PK). Kedua produk tersebut
+                        selanjutnya dapat digunakan sebagai bahan baku
+                        dalam berbagai kegiatan industri lanjutan.
+                    </p>
+
+                    <a href="#products" class="text-link">
+                        Mengenal Produk
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="highlight-grid">
+
+                <article class="highlight-card reveal">
+                    <span class="highlight-number">01</span>
+                    <i class="bi bi-calendar3"></i>
+                    <h3>1926</h3>
+                    <p>
+                        Tahun awal sejarah perkebunan Padang Halaban
+                        berdasarkan laporan historis.
+                    </p>
+                </article>
+
+                <article class="highlight-card reveal">
+                    <span class="highlight-number">02</span>
+                    <i class="bi bi-tree"></i>
+                    <h3>7.307 Ha</h3>
+                    <p>
+                        Luas perkebunan berdasarkan laporan kerja praktik.
+                    </p>
+                </article>
+
+                <article class="highlight-card reveal">
+                    <span class="highlight-number">03</span>
+                    <i class="bi bi-buildings"></i>
+                    <h3>± 2 Ha</h3>
+                    <p>
+                        Luas areal pabrik berdasarkan laporan kerja praktik.
+                    </p>
+                </article>
+
+                <article class="highlight-card reveal">
+                    <span class="highlight-number">04</span>
+                    <i class="bi bi-box-seam"></i>
+                    <h3>2 Produk</h3>
+                    <p>
+                        Produk utama pengolahan berupa CPO dan Palm Kernel.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="information-panel reveal">
+
+                <div class="information-heading">
+                    <span class="eyebrow">COMPANY INFORMATION</span>
+                    <h3>Informasi Perusahaan</h3>
+                    <p>
+                        Profil singkat unit operasional PT SMART Tbk
+                        Padang Halaban Mill yang bergerak dalam
+                        pengolahan kelapa sawit.
+                    </p>
+                </div>
+
+                <div class="information-list">
+
+                    <div class="information-item">
+                        <span>Nama Perusahaan</span>
+                        <strong>PT SMART Tbk</strong>
+                    </div>
+
+                    <div class="information-item">
+                        <span>Unit Operasional</span>
+                        <strong>Padang Halaban Mill</strong>
+                    </div>
+
+                    <div class="information-item">
+                        <span>Bidang Usaha</span>
+                        <strong>Pengolahan Kelapa Sawit</strong>
+                    </div>
+
+                    <div class="information-item">
+                        <span>Produk Utama</span>
+                        <strong>CPO dan Palm Kernel</strong>
+                    </div>
+
+                    <div class="information-item full-width">
+                        <span>Lokasi</span>
+                        <strong>Padang Halaban, Sumatera Utara</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="supply-panel reveal">
+                <span class="eyebrow">RAW MATERIAL SUPPLY</span>
+                <h3>Sumber Pasokan Tandan Buah Segar</h3>
+
+                <p>
+                    Kegiatan pengolahan pabrik didukung oleh pasokan
+                    tandan buah segar dari beberapa unit perkebunan
+                    yang tercantum dalam laporan kerja praktik.
+                </p>
+
+                <div class="supply-grid">
+                    <div>
+                        <span>01</span>
+                        <strong>Padang Halaban Estate</strong>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <strong>Pernantian Estate</strong>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <strong>Adipati Estate</strong>
+                    </div>
+
+                    <div>
+                        <span>04</span>
+                        <strong>Kanopan Ulu Estate</strong>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             03. SEJARAH, VISI, MISI
+        ====================================== -->
+        <section class="content-section section" id="history">
+
+            <div class="section-label">
+                <span>02</span>
+                <span class="label-line"></span>
+                <span>SEJARAH DAN IDENTITAS</span>
+            </div>
+
+            <div class="section-heading reveal">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    OUR JOURNEY
+                </div>
+
+                <h2>
+                    A Journey
+                    <br><span>Through Time.</span>
+                </h2>
+
+                <p>
+                    Perjalanan Padang Halaban dari awal berdirinya
+                    hingga menjadi bagian dari PT SMART Tbk.
+                    Perjalanan ini menggambarkan perubahan status
+                    dan perkembangan perusahaan dari waktu ke waktu.
+                </p>
+            </div>
+
+            <div class="timeline">
+
+                <article class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <strong class="timeline-number">1926</strong>
+                    <small>AWAL BERDIRINYA</small>
+                    <h3>Perkebunan Sumcama</h3>
+                    <p>
+                        Padang Halaban berdiri dengan nama
+                        PT Perkebunan Sumcama Padang Halaban.
+                    </p>
+                </article>
+
+                <article class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <strong class="timeline-number">1970</strong>
+                    <small>PERUBAHAN KEPEMILIKAN</small>
+                    <h3>Status PMA</h3>
+                    <p>
+                        Kepemilikan perusahaan dijual kepada pihak asing
+                        sehingga status perusahaan berubah menjadi
+                        Penanaman Modal Asing (PMA).
+                    </p>
+                </article>
+
+                <article class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <strong class="timeline-number">1985</strong>
+                    <small>PERUBAHAN STATUS</small>
+                    <h3>Status PMDN</h3>
+                    <p>
+                        Pada 28 Maret 1985, status perusahaan berubah
+                        menjadi Penanaman Modal Dalam Negeri (PMDN)
+                        berdasarkan surat BKPM No. 06A/1985.
+                    </p>
+                </article>
+
+                <article class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <strong class="timeline-number">1991</strong>
+                    <small>PERUBAHAN NAMA</small>
+                    <h3>PT SMART Corporation</h3>
+                    <p>
+                        Perusahaan berubah nama menjadi
+                        PT Sinar Mas Agro Resources and Technology Corporation.
+                    </p>
+                </article>
+
+                <article class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <strong class="timeline-number">1999</strong>
+                    <small>PERUSAHAAN TERBUKA</small>
+                    <h3>PT SMART Tbk</h3>
+                    <p>
+                        Perusahaan menjadi perusahaan terbuka
+                        dengan nama PT SMART Tbk.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="vision-grid">
+
+                <article class="vision-card reveal">
+                    <span class="eyebrow">OUR VISION</span>
+                    <h3>Visi Perusahaan</h3>
+                    <p>
+                        Menjadi perusahaan agribisnis dan produk
+                        konsumen global yang terintegrasi dan terbaik
+                        serta menjadi mitra pilihan.
+                    </p>
+                </article>
+
+                <article class="vision-card reveal">
+                    <span class="eyebrow">OUR MISSION</span>
+                    <h3>Misi Perusahaan</h3>
+                    <p>
+                        Secara efisien menyediakan produk, solusi,
+                        serta layanan agribisnis dan konsumen untuk
+                        menciptakan nilai tambah bagi para pemangku
+                        kepentingan.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="culture-panel reveal">
+                <span class="eyebrow">COMPANY CULTURE</span>
+                <h3>Budaya Perusahaan</h3>
+
+                <p>
+                    Budaya perusahaan menjadi landasan dalam
+                    membangun lingkungan kerja, kolaborasi,
+                    dan pencapaian kinerja organisasi.
+                </p>
+
+                <div class="culture-grid">
+
+                    <article>
+                        <i class="bi bi-trophy"></i>
+                        <h4>Prestasi</h4>
+                        <p>Menghasilkan kinerja yang luar biasa.</p>
+                    </article>
+
+                    <article>
+                        <i class="bi bi-people"></i>
+                        <h4>Kolaborasi</h4>
+                        <p>Bekerja sama sebagai satu tim.</p>
+                    </article>
+
+                    <article>
+                        <i class="bi bi-heart"></i>
+                        <h4>Rasa Memiliki</h4>
+                        <p>Memberikan kontribusi terbaik bagi perusahaan.</p>
+                    </article>
+
+                    <article>
+                        <i class="bi bi-person-check"></i>
+                        <h4>SDM</h4>
+                        <p>Mengembangkan potensi sumber daya manusia.</p>
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             04. STRUKTUR ORGANISASI
+        ====================================== -->
+        <section class="content-section section" id="organization">
+
+            <div class="section-label">
+                <span>03</span>
+                <span class="label-line"></span>
+                <span>STRUKTUR ORGANISASI</span>
+            </div>
+
+            <div class="section-heading reveal">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    PEOPLE BEHIND THE PROCESS
+                </div>
+
+                <h2>
+                    Organized
+                    <br><span>For Performance.</span>
+                </h2>
+
+                <p>
+                    Kegiatan operasional dan pengendalian persediaan bahan baku
+                    didukung oleh empat bagian kerja, yaitu Production Control,
+                    Grading, Produksi, dan Quality Control. Setiap bagian memiliki
+                    tugas dalam mengelola serta menyampaikan informasi yang
+                    dibutuhkan untuk mendukung kegiatan operasional pabrik.
+                </p>
+            </div>
+
+            <div class="organization-chart reveal">
+
+                <div class="org-branches">
+
+                    <article class="org-box">
+                        <i class="bi bi-clipboard-data"></i>
+                        <strong>Production Control (PC)</strong>
+                        <small>
+                            Pemantauan persediaan dan perencanaan kebutuhan TBS
+                        </small>
+                    </article>
+
+                    <article class="org-box">
+                        <i class="bi bi-clipboard-check"></i>
+                        <strong>Grading</strong>
+                        <small>
+                            Penerimaan, pemeriksaan, dan sortasi mutu TBS
+                        </small>
+                    </article>
+
+                    <article class="org-box">
+                        <i class="bi bi-gear-wide-connected"></i>
+                        <strong>Produksi (Production)</strong>
+                        <small>
+                            Pengelolaan proses dan pencatatan hasil produksi
+                        </small>
+                    </article>
+
+                    <article class="org-box">
+                        <i class="bi bi-clipboard2-pulse"></i>
+                        <strong>Quality Control (QC)</strong>
+                        <small>
+                            Pemeriksaan kualitas TBS, CPO, dan Palm Kernel
+                        </small>
+                    </article>
+
+                </div>
+
+                <p class="chart-note">
+                </p>
+
+            </div>
+
+            <div class="workforce-panel reveal">
+                <span class="eyebrow">HUMAN RESOURCES</span>
+                <h3>Data Tenaga Kerja Tahun 2018</h3>
+
+                <p>
+                    Komposisi tenaga kerja berdasarkan data historis
+                    yang dicantumkan dalam laporan kerja praktik.
+                </p>
+
+                <div class="workforce-grid">
+                    <div>
+                        <strong>11</strong>
+                        <span>Staf</span>
+                    </div>
+
+                    <div>
+                        <strong>132</strong>
+                        <span>SKU</span>
+                    </div>
+
+                    <div>
+                        <strong>7</strong>
+                        <span>PKWT</span>
+                    </div>
+
+                    <div>
+                        <strong>150</strong>
+                        <span>Total</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             05. FASILITAS DAN GALERI
+        ====================================== -->
+        <section class="content-section section" id="gallery">
+
+            <div class="section-label">
+                <span>04</span>
+                <span class="label-line"></span>
+                <span>FASILITAS DAN GALERI</span>
+            </div>
+
+            <div class="gallery-heading reveal">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    OUR FACILITIES
+                </div>
+
+                <h2>
+                    Inside The
+                    <br><span>Mill.</span>
+                </h2>
+
+                <p>
+                    Gambaran fasilitas dan aktivitas yang berkaitan
+                    dengan kegiatan operasional industri pengolahan
+                    kelapa sawit.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+
+                <article class="gallery-card reveal">
+                    <img
+                        src="https://www.smart-tbk.com/wp-content/uploads/2026/02/Fasilitas-BioCNG.jpg"
+                        alt="Fasilitas BioCNG Padang Halaban Mill"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+                        <span>RENEWABLE ENERGY</span>
+                        <h3>Fasilitas BioCNG</h3>
+                        <p>
+                            Fasilitas BioCNG yang dikembangkan di area
+                            Padang Halaban Palm Oil Mill untuk mengolah
+                            metana dari limbah cair pabrik kelapa sawit
+                            menjadi energi terbarukan.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="gallery-card reveal">
+                    <img
+                        src="https://www.sandabi.co.id/uploads/gallery/large_39ybzlCSqT3.jpg"
+                        alt="Ilustrasi proses sterilisasi kelapa sawit"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+                        <span>PRODUCTION PROCESS</span>
+                        <h3>Proses Sterilisasi</h3>
+                        <p>
+                            Ilustrasi proses perebusan tandan buah segar
+                            menggunakan peralatan sterilisasi sebelum
+                            memasuki tahapan pengolahan berikutnya.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="gallery-card reveal">
+                    <img
+                        src="https://imagedelivery.net/36XlR1UZca9aYAsKLMcK3A/22c683c8-bfef-4a83-d277-df8323ddbf00/hero"
+                        alt="Ilustrasi penerimaan tandan buah segar"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+                        <span>RAW MATERIAL</span>
+                        <h3>Penerimaan TBS</h3>
+                        <p>
+                            Ilustrasi aktivitas penerimaan dan penanganan
+                            tandan buah segar sebelum memasuki proses pengolahan.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="gallery-card reveal">
+                    <img
+                        src="https://asset.mediaindonesia.com/news/2024/02/c5b1777c262d2e28053d7b81a5585bb6.jpg"
+                        alt="Ilustrasi aktivitas pengolahan kelapa sawit"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+                        <span>MILL OPERATION</span>
+                        <h3>Aktivitas Pengolahan</h3>
+                        <p>
+                            Ilustrasi aktivitas operator dalam mengawasi
+                            proses pengolahan menggunakan peralatan industri.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="gallery-card reveal">
+                    <img
+                        src="https://www.sandabi.co.id/uploads/gallery/large_cY04WuZ0d1Z.jpg"
+                        alt="Ilustrasi fasilitas operasional pabrik"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+                        <span>INDUSTRIAL FACILITY</span>
+                        <h3>Fasilitas Operasional</h3>
+                        <p>
+                            Ilustrasi fasilitas pendukung kegiatan
+                            operasional pada industri pengolahan kelapa sawit.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="gallery-card reveal">
+                    <img
+                        src="https://www.emerson.com/is/image/emerson/feature-tank-level-measurement-and-inventory-control-in-palm-oil-milling%3A3-2?fmt=webp-alpha&qlt=95"
+                        alt="Ilustrasi tangki penyimpanan industri"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-caption">
+                        <span>STORAGE FACILITY</span>
+                        <h3>Tangki Penyimpanan</h3>
+                        <p>
+                            Ilustrasi tangki penyimpanan yang digunakan
+                            dalam kegiatan penanganan hasil pengolahan
+                            minyak kelapa sawit.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="gallery-note">
+                Keterangan: Foto fasilitas BioCNG merupakan dokumentasi
+                fasilitas yang dikembangkan di Padang Halaban Palm Oil Mill.
+                Foto lainnya merupakan ilustrasi fasilitas dan aktivitas
+                industri kelapa sawit dari sumber luar, bukan seluruhnya
+                dokumentasi langsung Padang Halaban Mill.
+            </p>
+
+        </section>
+
+        <!-- =====================================
+             06. PRODUK DAN PROSES
+        ====================================== -->
+        <section class="content-section section" id="products">
+
+            <div class="section-label">
+                <span>05</span>
+                <span class="label-line"></span>
+                <span>PRODUK DAN PROSES PRODUKSI</span>
+            </div>
+
+            <div class="section-heading reveal">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    OUR MAIN PRODUCTS
+                </div>
+
+                <h2>
+                    Products of
+                    <br><span>Palm Oil.</span>
+                </h2>
+
+                <p>
+                    Pengolahan tandan buah segar menghasilkan
+                    produk utama berupa minyak kelapa sawit mentah
+                    dan inti kelapa sawit.
+                </p>
+            </div>
+
+            <div class="products-grid">
+
+                <article class="product-card reveal">
+                    <div class="product-visual">
+                        <img
+                            src="https://www.dagangnews.com/sites/default/files/articles/minyak%20sawit%20mentah_dagangnews.jpg"
+                            alt="Crude Palm Oil atau CPO"
+                            loading="lazy"
+                        >
+                        <span>01</span>
+                    </div>
+
+                    <div class="product-info">
+                        <small>MAIN PRODUCT 01</small>
+                        <h3>Crude Palm Oil (CPO)</h3>
+                        <p>
+                            Crude Palm Oil merupakan minyak kelapa sawit
+                            mentah yang diperoleh melalui proses pengolahan
+                            tandan buah segar. Produk ini menjadi bahan baku
+                            untuk berbagai industri yang membutuhkan minyak
+                            kelapa sawit sebagai bahan pengolahan lanjutan.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="product-card reveal">
+                    <div class="product-visual">
+                        <img
+                            src="https://www.feedipedia.org/sites/default/files/images/oil_palm_kernels_01.jpg"
+                            alt="Palm Kernel atau inti sawit"
+                            loading="lazy"
+                            onerror="this.onerror=null; this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Palm_kernel_sieved_from_oil_palm.jpg';"
+                        >
+                        <span>02</span>
+                    </div>
+
+                    <div class="product-info">
+                        <small>MAIN PRODUCT 02</small>
+                        <h3>Palm Kernel (PK)</h3>
+                        <p>
+                            Palm Kernel merupakan inti biji kelapa sawit
+                            yang diperoleh melalui proses pemisahan bagian
+                            biji. Produk ini dapat dimanfaatkan sebagai
+                            bahan baku dalam industri pengolahan lanjutan.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="process-panel reveal">
+                <span class="eyebrow">PRODUCTION PROCESS</span>
+                <h3>Gambaran Tahapan Pengolahan</h3>
+
+                <p>
+                    Secara umum, pengolahan tandan buah segar
+                    melibatkan beberapa tahapan untuk memperoleh
+                    minyak kelapa sawit dan inti sawit.
+                </p>
+
+                <div class="process-flow">
+                    <div>
+                        <span>01</span>
+                        <strong>Penerimaan TBS</strong>
+                    </div>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                    <div>
+                        <span>02</span>
+                        <strong>Perebusan</strong>
+                    </div>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                    <div>
+                        <span>03</span>
+                        <strong>Penebahan</strong>
+                    </div>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                    <div>
+                        <span>04</span>
+                        <strong>Pengepresan</strong>
+                    </div>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                    <div>
+                        <span>05</span>
+                        <strong>Pengolahan Lanjutan</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             07. LOKASI
+        ====================================== -->
+        <section class="content-section section" id="location">
+
+            <div class="section-label">
+                <span>06</span>
+                <span class="label-line"></span>
+                <span>LOKASI PERUSAHAAN</span>
+            </div>
+
+            <div class="two-column">
+
+                <div class="location-details reveal">
+
+                    <div class="section-heading">
+                        <div class="eyebrow">
+                            <span class="eyebrow-line"></span>
+                            OUR LOCATION
+                        </div>
+
+                        <h2>
+                            Find Us
+                            <br><span>Here.</span>
+                        </h2>
+
+                        <p>
+                            Unit operasional Padang Halaban Mill
+                            berlokasi di wilayah Sumatera Utara.
+                        </p>
+                    </div>
+
+                    <div class="location-item">
+                        <i class="bi bi-geo-alt"></i>
+
+                        <div>
+                            <strong>Alamat</strong>
+                            <p>
+                                Padang Halaban, Kecamatan Aek Kuo,
+                                Kabupaten Labuhanbatu Utara, Sumatera Utara.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="location-item">
+                        <i class="bi bi-building"></i>
+
+                        <div>
+                            <strong>Unit Operasional</strong>
+                            <p>PT SMART Tbk – Padang Halaban Mill</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="map-card reveal">
+                    <iframe
+                        src="https://www.google.com/maps?q=Padang+Halaban+Mill&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen
+                        title="Peta lokasi Padang Halaban Mill">
+                    </iframe>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             08. MEDIA SOSIAL
+        ====================================== -->
+        <section class="content-section section" id="social">
+
+            <div class="section-label">
+                <span>07</span>
+                <span class="label-line"></span>
+                <span>MEDIA SOSIAL</span>
+            </div>
+
+            <div class="section-heading reveal">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    STAY CONNECTED
+                </div>
+
+                <h2>
+                    Connect With
+                    <br><span>Us.</span>
+                </h2>
+
+                <p>
+                    Ikuti informasi dan perkembangan PT SMART Tbk
+                    melalui kanal digital dan media sosial perusahaan.
+                </p>
+            </div>
+
+            <div class="social-grid">
+
+                <a
+                    href="https://www.smart-tbk.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card reveal"
+                >
+                    <i class="bi bi-globe"></i>
+
+                    <div class="social-info">
+                        <small>VISIT OUR WEBSITE</small>
+                        <strong>Website Resmi</strong>
+                        <span>smart-tbk.com</span>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right social-arrow"></i>
+                </a>
+
+                <a
+                    href="https://www.instagram.com/sinarmas_agri/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card reveal"
+                >
+                    <i class="bi bi-instagram"></i>
+
+                    <div class="social-info">
+                        <small>FOLLOW US ON</small>
+                        <strong>Instagram</strong>
+                        <span>@sinarmas_agri</span>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right social-arrow"></i>
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/company/smart-tbk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card reveal"
+                >
+                    <i class="bi bi-linkedin"></i>
+
+                    <div class="social-info">
+                        <small>CONNECT WITH US</small>
+                        <strong>LinkedIn</strong>
+                        <span>PT SMART Tbk</span>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right social-arrow"></i>
+                </a>
+
+                <a
+                    href="https://www.youtube.com/results?search_query=Sinar+Mas+Agribusiness+and+Food"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card reveal"
+                >
+                    <i class="bi bi-youtube"></i>
+
+                    <div class="social-info">
+                        <small>WATCH OUR VIDEOS</small>
+                        <strong>YouTube</strong>
+                        <span>Sinar Mas Agribusiness and Food</span>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right social-arrow"></i>
+                </a>
+
+            </div>
+
+            <p class="small-note">
+                Tautan media sosial mengarahkan pengunjung ke kanal
+                atau hasil pencarian terkait PT SMART Tbk dan
+                Sinar Mas Agribusiness.
+            </p>
+
+        </section>
+
+        <!-- =====================================
+             09. KONTAK
+        ====================================== -->
+        <section class="contact-section section" id="contact">
+
+            <div class="contact-content reveal">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    GET IN TOUCH
+                </div>
+
+                <h2>
+                    Let's Build
+                    <br><span>A Better Future.</span>
+                </h2>
+
+                <p>
+                    Untuk informasi lebih lanjut mengenai PT SMART Tbk,
+                    kunjungi situs resmi perusahaan melalui tautan berikut.
+                </p>
+
+                <a
+                    href="https://www.smart-tbk.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="primary-button"
+                >
+                    Kunjungi Website Resmi
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+    <footer class="site-footer">
+
+        <a href="#home" class="brand">
+            <span class="brand-icon">S</span>
+
+            <span class="brand-text">
+                <strong>PT SMART TBK</strong>
+                <small>PADANG HALABAN MILL</small>
+            </span>
+        </a>
+
+        <span class="footer-center">
+            COMPANY PROFILE · PADANG HALABAN MILL
+        </span>
+
+        <a href="#home" class="footer-top">
+            Kembali ke atas
+            <i class="bi bi-arrow-up"></i>
+        </a>
+
+    </footer>
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+    <script>
+        /* =====================================
+           NAVBAR BERUBAH SAAT SCROLL
+        ===================================== */
+        const siteHeader = document.getElementById("siteHeader");
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 40) {
+                siteHeader.classList.add("scrolled");
+            } else {
+                siteHeader.classList.remove("scrolled");
+            }
+        });
+
+
+        /* =====================================
+           MENU MOBILE
+        ===================================== */
+        const menuToggle = document.getElementById("menuToggle");
+        const mainNav = document.getElementById("mainNav");
+
+        menuToggle.addEventListener("click", function () {
+            mainNav.classList.toggle("open");
+
+            const icon = menuToggle.querySelector("i");
+
+            if (mainNav.classList.contains("open")) {
+                icon.classList.remove("bi-list");
+                icon.classList.add("bi-x-lg");
+                menuToggle.setAttribute("aria-label", "Tutup menu");
+            } else {
+                icon.classList.remove("bi-x-lg");
+                icon.classList.add("bi-list");
+                menuToggle.setAttribute("aria-label", "Buka menu");
+            }
+        });
+
+
+        /* =====================================
+           MENU MOBILE MENUTUP SETELAH DIKLIK
+        ===================================== */
+        document.querySelectorAll(".nav-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+                mainNav.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+
+                icon.classList.remove("bi-x-lg");
+                icon.classList.add("bi-list");
+
+                menuToggle.setAttribute("aria-label", "Buka menu");
+            });
+        });
+
+
+        /* =====================================
+           ANIMASI REVEAL SAAT SCROLL
+        ===================================== */
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+        revealElements.forEach(function (element) {
+            revealObserver.observe(element);
+        });
+
+
+        /* =====================================
+           NAVIGASI AKTIF BERDASARKAN SECTION
+        ===================================== */
+        const sections = document.querySelectorAll("main section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const indexLinks = document.querySelectorAll(".index-number");
+
+        const sectionObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        const currentId = entry.target.getAttribute("id");
+
+                        navLinks.forEach(function (link) {
+                            link.classList.toggle(
+                                "active",
+                                link.getAttribute("href") === "#" + currentId
+                            );
+                        });
+
+                        indexLinks.forEach(function (link) {
+                            link.classList.toggle(
+                                "active",
+                                link.getAttribute("href") === "#" + currentId
+                            );
+                        });
+                    }
+                });
+            },
+            {
+                threshold: 0.35
+            }
+        );
+
+        sections.forEach(function (section) {
+            sectionObserver.observe(section);
+        });
+
+
+        /* =====================================
+           NAVBAR SAAT HALAMAN PERTAMA DIBUKA
+        ===================================== */
+        if (window.scrollY > 40) {
+            siteHeader.classList.add("scrolled");
+        }
+        
+    </script>
+
+</body>
+</html>
